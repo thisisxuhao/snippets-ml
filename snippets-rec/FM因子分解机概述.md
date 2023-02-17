@@ -13,15 +13,11 @@ $$
 维度高时会导致参数爆炸，同时很多维度是不相关的，学习起来比较困难。
 
 将矩阵$W$近似看为两个$n*k$阶矩阵的乘积(实际应用中p往往非常大, k远小于p)：
-$$
-\hat{\mathbf{W}}=\mathbf{V} \mathbf{V}^T=\left(\begin{array}{c}
-\mathbf{v}_1 \\
-\mathbf{v}_2 \\
-\vdots \\
-\mathbf{v}_n
-\end{array}\right)\left(\begin{array}{llll}
-\mathbf{v}_1^T & \mathbf{v}_2^T & \cdots & \mathbf{v}_n^T
-\end{array}\right))
+![](http://latex.codecogs.com/svg.latex?\hat{\mathbf{W}}=\mathbf{V} \mathbf{V}^T=\left(\begin{array}{c} \mathbf{v}_1 \\ \mathbf{v}_2 \\ \vdots \\ \mathbf{v}_n \end{array}\right)\left(\begin{array}{llll} \mathbf{v}_1^T & \mathbf{v}_2^T & \cdots & \mathbf{v}_n^T \end{array}\right)))
+
+
+$$ 
+\hat{\mathbf{W}}=\mathbf{V} \mathbf{V}^T=\left(\begin{array}{c} \mathbf{v}_1 \\ \mathbf{v}_2 \\ \vdots \\ \mathbf{v}_n \end{array}\right)\left(\begin{array}{llll} \mathbf{v}_1^T & \mathbf{v}_2^T & \cdots & \mathbf{v}_n^T \end{array}\right))
 $$
 
 
