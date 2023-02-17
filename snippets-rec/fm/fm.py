@@ -78,15 +78,15 @@ class FM2WayModel(ClassifierMixin):
             v_pre = np.copy(self.V)
 
             for i in range(0, X.shape[0]):
-                mult = 2 * (Y_pred[i] - y[i])
+                delta_y = 2 * (Y_pred[i] - y[i])
                 # 截距项
-                self.w0 -= self.learning_rate * mult
+                self.w0 -= self.learning_rate * delta_y
                 # 线性项
-                self.w -= self.learning_rate * mult * X[i]
+                self.w -= self.learning_rate * delta_y * X[i]
                 # 交叉项
                 for f in range(0, self.k):
                     grad = np.dot(self.M[f], X[i, :]) - self.V[i, f] * np.dot(X[i, :], X[i, :])
-                    self.V[i, f] -= self.learning_rate * grad * mult
+                    self.V[i, f] -= self.learning_rate * grad * delta_y
             self.V = self.V / (np.linalg.norm(self.V) + 10)
 
             e = abs(w0_pre - self.w0)
@@ -116,7 +116,8 @@ class FM2WayModel(ClassifierMixin):
         :param x: 一条记录, 需要是一维向量
         :return: 预测得到的y
         """
-        assert x.ndim == 1
+        assert x.ndim == 1, '单条记录预测, 需要输入一维向量'
+        assert self.V is not None, '模型未训练'
 
         y_head = self.w0
         y_head += np.dot(self.w, x)
