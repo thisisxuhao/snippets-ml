@@ -6,15 +6,15 @@
 - FM算法又有延伸
 
 $$
-![](http://latex.codecogs.com/svg.latex?\hat{y}(x):=\underbrace{w_{i=1}^n w_i x_i}_{\text {linear features }}+\underbrace{\sum_{i=1}^n \sum_{j=i+1}^n w_{i j} x_i x_j}_{\text {cross features }})
+\hat{y}(x):=\underbrace{w_{i=1}^n w_i x_i}_{\text {linear features }}+\underbrace{\sum_{i=1}^n \sum_{j=i+1}^n w_{i j} x_i x_j}_{\text {cross features }}
 $$
 
 
 维度高时会导致参数爆炸，同时很多维度是不相关的，学习起来比较困难。
 
-将![](http://latex.codecogs.com/svg.latex?wij)矩阵$W$近似看为两个$n*k$阶矩阵的乘积(实际应用中p往往非常大, k远小于p)：
+将矩阵$W$近似看为两个$n*k$阶矩阵的乘积(实际应用中p往往非常大, k远小于p)：
 $$
-![](http://latex.codecogs.com/svg.latex?\hat{\mathbf{W}}=\mathbf{V} \mathbf{V}^T=\left(\begin{array}{c}
+\hat{\mathbf{W}}=\mathbf{V} \mathbf{V}^T=\left(\begin{array}{c}
 \mathbf{v}_1 \\
 \mathbf{v}_2 \\
 \vdots \\
