@@ -6,7 +6,7 @@
 - FM算法又有延伸
 
 $$
-\hat{y}(x):=\underbrace{w_{i=1}^n w_i x_i}_{\text {线性回归 }}+\underbrace{\sum_{i=1}^n \sum_{j=i+1}^n w_{i j} x_i x_j}_{\text {交双烦 (组合待征) }}
+\hat{y}(x):=\underbrace{w_{i=1}^n w_i x_i}_{\text {线性回归 }}+\underbrace{\sum_{i=1}^n \sum_{j=i+1}^n w_{i j} x_i x_j}_{\text {交叉项 (组合待征) }}
 $$
 
   	
@@ -14,6 +14,8 @@ $$
 维度高时会导致参数爆炸，同时很多维度是不相关的，学习起来比较困难。
 
 将wij矩阵W近似看为两个n*k阶矩阵的乘积：
+
+
 $$
 \hat{\mathbf{W}}=\mathbf{V} \mathbf{V}^T=\left(\begin{array}{c}
 \mathbf{v}_1 \\
@@ -43,12 +45,16 @@ $$
 ### 梯度下降求解
 
 最优化求解可以使用SGC, ALS, MCMC等方法。以最简单的梯度下降为例，y关于v的梯度为：
+
 $$
 \frac{\partial}{\partial v_{i, f}} \hat{y}(\mathbf{x})= \left ( x_i \sum_{j=1}^n v_{j, f} x_j \right )-v_{i, f} ||x_i||_{2}
 $$
-  			此外y关于wi的梯度就是xi。
+  			
+此外y关于wi的梯度就是xi。
 
-			假定损失函数为$MSE$, 学习率为$alpha$，则参数求解的梯度下降迭代过程为：
+假定损失函数为$MSE$, 学习率为$alpha$，则参数求解的梯度下降迭代过程为：
+
+
 $$
 \begin{aligned}
 & w_0 = w_0 - \alpha * \frac{\partial L(w_0)}{\partial w_0} \\
@@ -56,7 +62,11 @@ $$
 &v_{i,f} =v_{i,f} - \alpha * \frac{\partial L(v_{i,f})}{\partial v_{i,f}} \\
 \end{aligned}：
 $$
-			**梯度求解方式如下：**
+
+
+**梯度求解方式如下：**
+
+
 $$
 \begin{aligned}
 
@@ -80,17 +90,7 @@ $$
 
 ### 求解DEMO
 
-我实现了一个求解demo代码[fm.py](fm/fm.py)：
-
-```python
-
-```
-
-
-
-
-
-		
+我实现了一个求解demo代码[fm.py](fm/fm.py)
 
 ## FM的意义
 
