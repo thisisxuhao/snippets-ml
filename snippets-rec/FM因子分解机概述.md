@@ -5,8 +5,13 @@
 - FM是推荐算法领域一个有里程碑意义的算法
 - FM算法又有延伸
 
+样本$x_i$为p维向量
+
+
+
+
 $$
-\hat{y}(x):=\underbrace{w_{i=1}^n w_i x_i}_{\text {线性回归 }}+\underbrace{\sum_{i=1}^n \sum_{j=i+1}^n w_{i j} x_i x_j}_{\text {交叉项 (组合待征) }}
+\hat{y}(x)=w_0 + \underbrace{\sum_{i=1}^p w_i x_i}_{\text {线性回归 }}+\underbrace{\sum_{i=1}^p \sum_{j=i+1}^p w_{i j} x_i x_j}_{\text {交叉项 (组合待征) }}
 $$
 
   	
@@ -21,20 +26,20 @@ $$
 \mathbf{v}_1 \\
 \mathbf{v}_2 \\
 \vdots \\
-\mathbf{v}_n
+\mathbf{v}_p
 \end{array}\right)\left(\begin{array}{llll}
-\mathbf{v}_1^T & \mathbf{v}_2^T & \cdots & \mathbf{v}_n^T
+\mathbf{v}_1^T & \mathbf{v}_2^T & \cdots & \mathbf{v}_p^T
 \end{array}\right)
 $$
 
 $$
 \begin{aligned}
 交叉相部分= \\
-& \sum_{i=1}^{n-1} \sum_{j=i+1}^n\left\langle\mathbf{v}_i, \mathbf{v}_j\right\rangle x_i x_j \\
-= & \frac{1}{2} \sum_{i=1}^n \sum_{j=1}^n\left\langle\mathbf{v}_i, \mathbf{v}_j\right\rangle x_i x_j-\frac{1}{2} \sum_{i=1}^n\left\langle\mathbf{v}_i, \mathbf{v}_i\right\rangle x_i x_i \\
-= & \frac{1}{2}\left(\sum_{i=1}^n \sum_{j=1}^n \sum_{f=1}^k v_{i, f} v_{j, f} x_i x_j-\sum_{i=1}^n \sum_{f=1}^k v_{i, f} v_{i, f} x_i x_i\right) \\
-= & \frac{1}{2} \sum_{f=1}^k\left(\left(\sum_{i=1}^n v_{i, f} x_i\right)\left(\sum_{j=1}^n v_{j, f} x_j\right)-\sum_{i=1}^n v_{i, f}^2 ||x_i||_{2}\right) \\
-= & \frac{1}{2} \sum_{f=1}^k\left(||\sum_{i=1}^n v_{i, f} x_i||_{2}-\sum_{i=1}^n v_{i, f}^2 ||x_i||_{2}\right)
+& \sum_{i=1}^{p} \sum_{j=i+1}^p\left\langle\mathbf{v}_i, \mathbf{v}_j\right\rangle x_i x_j \\
+= & \frac{1}{2} \sum_{i=1}^p \sum_{j=1}^p\left\langle\mathbf{v}_i, \mathbf{v}_j\right\rangle x_i x_j-\frac{1}{2} \sum_{i=1}^p\left\langle\mathbf{v}_i, \mathbf{v}_i\right\rangle x_i x_i \\
+= & \frac{1}{2}\left(\sum_{i=1}^p \sum_{j=1}^p \sum_{f=1}^k v_{i, f} v_{j, f} x_i x_j-\sum_{i=1}^p \sum_{f=1}^k v_{i, f} v_{i, f} x_i x_i\right) \\
+= & \frac{1}{2} \sum_{f=1}^k\left(\left(\sum_{i=1}^n v_{i, f} x_i\right)\left(\sum_{j=1}^n v_{j, f} x_j\right)-\sum_{i=1}^n v_{i, f}^2 x_i^{2}\right) \\
+= & \frac{1}{2} \sum_{f=1}^k\left(\left ( \sum_{i=1}^n v_{i, f} x_i \right)^{2}-\sum_{i=1}^n v_{i, f}^2 x_i^{2}\right)
 \end{aligned}
 $$
 
@@ -90,15 +95,35 @@ $$
 \frac{\partial L(v_{i,f})}{\partial v_{i,f}}
 & =\frac{\partial \sum_{j=1}^n (\hat y_j- y_j)^2}{\partial v_{i,f}} \\
 &=\sum_{j=1}^n 2*(\hat y_j - y_j) * \frac{\partial}{\partial v_{i, f}} \hat{y}(\mathbf{x}) \\
-&= \sum_{j=1}^n 2*(\hat y_j-y_j) * x_i \left( \sum_{h=1}^n v_{h, f} x_j-v_{h, f} ||x_h||_{2} \right)
+&= \sum_{j=1}^n 2*(\hat y_j-y_j) * \left(  x_i\sum_{h=1}^n v_{h, f} x_j-v_{h, f} ||x_h||_{2} \right)
 \end{aligned}
 $$
+
+
+
+
+
+### FM矩阵表示
+
+在深度学习框架中，往往都是以张量的形式进行计算的。因此将上面元素集的表达式转为张量更方便运算。这里不推导梯度了，因为深度学习框架几乎都支持自动求导。
+$$
+\hat Y = W_0 + XW +\sum_{i=1}^{p} \sum_{j=i+1}^p\left\langle\mathbf{v}_i, \mathbf{v}_j\right\rangle \left\langle X_i, X_j \right\rangle
+$$
+
+
+
 
 
 
 ### 求解DEMO
 
 我实现了一个求解demo代码[fm.py](fm/fm.py)
+
+
+
+torch demo:
+
+参考：https://github.com/Losstie/RecommendAlgorithn/blob/master/FM/FM.py
 
 ## FM的意义
 
@@ -120,7 +145,7 @@ $$
 
 - xlearn
 - pytorch
-- 
+- [pytorch-fm](https://github.com/rixwew/pytorch-fm.git)
 
 
 
@@ -134,3 +159,8 @@ $$
 - [一文看懂推荐系统：排序08：Factorization Machines（FM）因子分解机，一个特殊的案例就是MF，矩阵分解为uv的乘积](https://blog.csdn.net/weixin_46838716/article/details/126554031)
 - [paddle-rec](https://gitee.com/paddlepaddle/PaddleRec)
 
+- [FFM](https://www.csie.ntu.edu.tw/~cjlin/papers/ffm.pdf)
+
+- [pytorch-fm](https://github.com/rixwew/pytorch-fm.git)
+
+  
