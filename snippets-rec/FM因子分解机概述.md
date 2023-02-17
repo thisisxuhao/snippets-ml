@@ -49,7 +49,7 @@ $$
 $$
 \frac{\partial}{\partial v_{i, f}} \hat{y}(\mathbf{x})= \left ( x_i \sum_{j=1}^n v_{j, f} x_j \right )-v_{i, f} ||x_i||_{2}
 $$
-  			
+
 此外y关于wi的梯度就是xi。
 
 假定损失函数为$MSE$, 学习率为$alpha$，则参数求解的梯度下降迭代过程为：
@@ -60,27 +60,35 @@ $$
 & w_0 = w_0 - \alpha * \frac{\partial L(w_0)}{\partial w_0} \\
 & w_i = w_i - \alpha * \frac{\partial L(w_i)}{\partial w_i} \\
 &v_{i,f} =v_{i,f} - \alpha * \frac{\partial L(v_{i,f})}{\partial v_{i,f}} \\
-\end{aligned}：
+\end{aligned}
 $$
 
 梯度求解方式如下：     
 
+
 $$
 \begin{aligned}
+
 \frac{\partial L(w_0)}{\partial w_0}
 & =  \frac{\partial \sum_{j=1}^n (\hat y_j- y_j)^2}{\partial w_0} \\
 &=\sum_{j=1}^n 2*(\hat y_j - y_j)* \frac{\partial \hat y_j}{\partial w_0} \\
 &=\sum_{j=1}^n 2*(\hat y_j - y_j)*1 \\
+
 \frac{\partial L(w_i)}{\partial w_i}
 & =  \frac{\partial \sum_{j=1}^n (\hat y_j- y_j)^2}{\partial w_i} \\
 &=\sum_{j=1}^n 2*(\hat y_j - y_j)* \frac{\partial \hat y_j}{\partial w_i} \\
 &=\sum_{j=1}^n 2*(\hat y_j - y_j)*x_{ji} \\
+
 \frac{\partial L(v_{i,f})}{\partial v_{i,f}}
 & =\frac{\partial \sum_{j=1}^n (\hat y_j- y_j)^2}{\partial v_{i,f}} \\
 &=\sum_{j=1}^n 2*(\hat y_j - y_j) * \frac{\partial}{\partial v_{i, f}} \hat{y}(\mathbf{x}) \\
 &= \sum_{j=1}^n 2*(\hat y_j-y_j) * x_i \left( \sum_{h=1}^n v_{h, f} x_j-v_{h, f} ||x_h||_{2} \right)
+
 \end{aligned}
 $$
+
+
+
 
 
 ### 求解DEMO
