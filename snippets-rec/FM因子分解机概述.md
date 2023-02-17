@@ -65,29 +65,34 @@ $$
 
 梯度求解方式如下：     
 
-
 $$
 \begin{aligned}
-
 \frac{\partial L(w_0)}{\partial w_0}
 & =  \frac{\partial \sum_{j=1}^n (\hat y_j- y_j)^2}{\partial w_0} \\
 &=\sum_{j=1}^n 2*(\hat y_j - y_j)* \frac{\partial \hat y_j}{\partial w_0} \\
 &=\sum_{j=1}^n 2*(\hat y_j - y_j)*1 \\
-
-\frac{\partial L(w_i)}{\partial w_i}
-& =  \frac{\partial \sum_{j=1}^n (\hat y_j- y_j)^2}{\partial w_i} \\
-&=\sum_{j=1}^n 2*(\hat y_j - y_j)* \frac{\partial \hat y_j}{\partial w_i} \\
-&=\sum_{j=1}^n 2*(\hat y_j - y_j)*x_{ji} \\
-
-\frac{\partial L(v_{i,f})}{\partial v_{i,f}}
-& =\frac{\partial \sum_{j=1}^n (\hat y_j- y_j)^2}{\partial v_{i,f}} \\
-&=\sum_{j=1}^n 2*(\hat y_j - y_j) * \frac{\partial}{\partial v_{i, f}} \hat{y}(\mathbf{x}) \\
-&= \sum_{j=1}^n 2*(\hat y_j-y_j) * x_i \left( \sum_{h=1}^n v_{h, f} x_j-v_{h, f} ||x_h||_{2} \right)
-
 \end{aligned}
 $$
 
 
+$$
+\begin{aligned}
+\frac{\partial L(w_i)}{\partial w_i}
+& =  \frac{\partial \sum_{j=1}^n (\hat y_j- y_j)^2}{\partial w_i} \\
+&=\sum_{j=1}^n 2*(\hat y_j - y_j)* \frac{\partial \hat y_j}{\partial w_i} \\
+&=\sum_{j=1}^n 2*(\hat y_j - y_j)*x_{ji} \\
+\end{aligned}
+$$
+
+
+$$
+\begin{aligned}
+\frac{\partial L(v_{i,f})}{\partial v_{i,f}}
+& =\frac{\partial \sum_{j=1}^n (\hat y_j- y_j)^2}{\partial v_{i,f}} \\
+&=\sum_{j=1}^n 2*(\hat y_j - y_j) * \frac{\partial}{\partial v_{i, f}} \hat{y}(\mathbf{x}) \\
+&= \sum_{j=1}^n 2*(\hat y_j-y_j) * x_i \left( \sum_{h=1}^n v_{h, f} x_j-v_{h, f} ||x_h||_{2} \right)
+\end{aligned}
+$$
 
 
 
