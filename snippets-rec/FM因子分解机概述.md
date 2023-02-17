@@ -65,6 +65,16 @@ $$
 
 梯度求解方式如下：     
 
+$$
+\begin{aligned}
+\frac{\partial L(w_0)}{\partial w_0}
+& =  \frac{\partial \sum_{j=1}^n (\hat y_j- y_j)^2}{\partial w_0} \\
+&=\sum_{j=1}^n 2*(\hat y_j - y_j)* \frac{\partial \hat y_j}{\partial w_0} \\
+&=\sum_{j=1}^n 2*(\hat y_j - y_j)*1 \\
+\end{aligned}
+$$
+
+
 
 $$
 \begin{aligned}
