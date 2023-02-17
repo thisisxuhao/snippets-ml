@@ -5,6 +5,10 @@
 - FM是推荐算法领域一个有里程碑意义的算法
 - FM算法又有延伸
 
+![](http://latex.codecogs.com/svg.latex?\sqrt{\sum\limits_{i=1}^{n}(x_{i}-y_{i})^2})
+
+![](http://latex.codecogs.com/svg.latex?\hat{y}(x):=\underbrace{w_{i=1}^n w_i x_i}_{\text {线性回归 }}+\underbrace{\sum_{i=1}^n \sum_{j=i+1}^n w_{i j} x_i x_j}_{\text {交双烦 (组合待征) }})
+
 $$
 \hat{y}(x):=\underbrace{w_{i=1}^n w_i x_i}_{\text {线性回归 }}+\underbrace{\sum_{i=1}^n \sum_{j=i+1}^n w_{i j} x_i x_j}_{\text {交双烦 (组合待征) }}
 $$
@@ -13,7 +17,7 @@ $$
 
 维度高时会导致参数爆炸，同时很多维度是不相关的，学习起来比较困难。
 
-将wij矩阵W近似看为两个n*k阶矩阵的乘积：
+将![](http://latex.codecogs.com/svg.latex?wij)矩阵W近似看为两个n*k阶矩阵的乘积：
 $$
 \hat{\mathbf{W}}=\mathbf{V} \mathbf{V}^T=\left(\begin{array}{c}
 \mathbf{v}_1 \\
