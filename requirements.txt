@@ -2,4 +2,5 @@ sklearn
 numpy
 pandas
 torch==1.13.1
-
+jupyter==1.0.0
+matplotlib==3.5.3
