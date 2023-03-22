@@ -139,6 +139,8 @@ torch demo:
 - FFM
 - DeepFM
 
+更多参考：https://zhuanlan.zhihu.com/p/499809627
+
 
 
 ## FM的API
@@ -153,14 +155,23 @@ torch demo:
 ## 参考
 
 - [原文论文](https://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.393.8529&rep=rep1&type=pdf)
+
 - [libFM](http://www.libfm.org/)
+
 - [因子机深入理解](https://tracholar.github.io/machine-learning/2017/03/10/factorization-machine.html)
+
 - [xlearn](https://xlearn-doc-cn.readthedocs.io/en/latest/install/index.html)
+
 - [一文看懂推荐系统：排序08：Factorization Machines（FM）因子分解机，一个特殊的案例就是MF，矩阵分解为uv的乘积](https://blog.csdn.net/weixin_46838716/article/details/126554031)
+
 - [paddle-rec](https://gitee.com/paddlepaddle/PaddleRec)
 
 - [FFM](https://www.csie.ntu.edu.tw/~cjlin/papers/ffm.pdf)
 
 - [pytorch-fm](https://github.com/rixwew/pytorch-fm.git)
 
+- [DeepCTR-Pytorch](https://github.com/shawroad/DeepCTR-pytorch)
+
+  
+  
   

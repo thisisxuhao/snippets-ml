@@ -9,3 +9,4 @@ fastparquet==0.8.1
 torchvision==0.14.1
 gensim==4.2.0
 mlxtend==0.21.0
+tensorflow_cpu==2.5.0
