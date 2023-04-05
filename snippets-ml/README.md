@@ -13,4 +13,28 @@ pip intall -r ./requirements.txt
 ```
 
 
+## 学习社区
+
+### 社区
+- 天池
+
+- 智源
+
+- Aminer
+
+
+### 论文
+- axiv
+
+- paper with code
+
+### 竞赛
+- 天池
+
+
+
+### 个人博客
+- https://lilianweng.github.io/
+
+
 
