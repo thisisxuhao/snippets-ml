@@ -28,6 +28,9 @@ pip intall -r ./requirements.txt
 
 - paper with code
 
+- paper talk   
+https://papertalk.org/index
+
 ### 竞赛
 - 天池
 
