@@ -22,6 +22,11 @@ pip intall -r ./requirements.txt
 
 - Aminer
 
+- slearn官网    
+
+https://scikitlearn.com.cn/0.21.3/12/   
+
+https://scikit-learn.org/stable/auto_examples/semi_supervised/plot_semi_supervised_versus_svm_iris.html#sphx-glr-auto-examples-semi-supervised-plot-semi-supervised-versus-svm-iris-py
 
 ### 论文
 - axiv

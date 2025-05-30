@@ -103,7 +103,7 @@ if __name__ == "__main__":
     from sklearn.metrics import accuracy_score
 
     # 生成示例数据
-    # X, y = make_circles(n_samples=300, noise=0.1, factor=0.5, random_state=42)
+    # X_all, y_all = make_circles(n_samples=300, noise=0.1, factor=0.5, random_state=42)
     X, y = make_moons(n_samples=3000, noise=0.05, random_state=42)
     y[y == 0] = -1  # 将标签转换为 {-1, 1}
 

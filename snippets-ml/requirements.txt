@@ -1,5 +1,5 @@
 # python==3.9.16
-scikit-learn==1.0.2
+scikit-learn==1.6.1
 statsmodels==0.14.4
 numpy==2.0.2
 pandas==2.2.3

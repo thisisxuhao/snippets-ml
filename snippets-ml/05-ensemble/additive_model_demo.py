@@ -61,8 +61,8 @@ class AdditiveLR():
             model = LogisticRegression()
             w = np.zeros_like(y)
             random.seed(i * 1003 % 51)
-            # s = randint(len(y) // self.n_models * i, len(y) // self.n_models * (i + 1))
-            # w[s:s + len(y) // self.n_models * 2] = 1.0
+            # s = randint(len(y_all) // self.n_models * i, len(y_all) // self.n_models * (i + 1))
+            # w[s:s + len(y_all) // self.n_models * 2] = 1.0
             w[len(y) // 5 * i:int(len(y) // self.n_models * (i + 1.2))] = 1.0
             n_models = 4
             i = i % 4
@@ -112,11 +112,11 @@ class AdditiveLR():
 X, y = make_circles(n_samples=300, noise=0.1, factor=0.5, random_state=random_state)
 import pandas as pd
 
-data = pd.DataFrame(np.c_[X, y], columns=['x1', 'x2', 'y'])
+data = pd.DataFrame(np.c_[X, y], columns=['x1', 'x2', 'y_all'])
 data['theta'] = data.apply(lambda s: math.atan(s['x2'] / s['x1']) + np.pi * float(s['x1'] > 0), axis=1)
 data.sort_values(by=['theta'], inplace=True)
 X = np.array(data[['x1', 'x2']].values)
-y = np.array(data['y'].values)
+y = np.array(data['y_all'].values)
 alr = AdditiveLR(5)
 alr.fit(X, y)
 # np.random.seed(1123)
@@ -126,7 +126,7 @@ print(alr.predict_prob(X).shape)
 print(alr.predict(X))
 print(accuracy_score(y, alr.predict(X)))
 
-# visualize_results(X, y, alr, 'additive logistic')
+# visualize_results(X_all, y_all, alr, 'additive logistic')
 # for clf in alr.models:
 #     x = np.linspace(-1.5, 1.5)
 #     x = np.c_(np.ones_like(x), x)
@@ -152,16 +152,16 @@ ada = AdaBoostClassifier(
 from lightgbm import LGBMClassifier
 from sklearn.tree import DecisionTreeClassifier
 lgb = LGBMClassifier()
-# lgb.fit(X, y)
+# lgb.fit(X_all, y_all)
 dc = DecisionTreeClassifier()
-# dc.fit(X, y)
+# dc.fit(X_all, y_all)
 from sklearn.svm import SVC
 svc = SVC()
-# svc.fit(X, y)
+# svc.fit(X_all, y_all)
 
 from sklearn.linear_model import LogisticRegression
 
-# ada.fit(X, y)
+# ada.fit(X_all, y_all)
 # # 打印每个基础分类器的系数和权重
 # print("基础分类器系数和权重:")
 # for i, (clf, alpha) in enumerate(zip(ada.estimators_, ada.estimator_weights_)):
@@ -169,7 +169,7 @@ from sklearn.linear_model import LogisticRegression
 #     print(f"  权重: {alpha:.4f}")
 #     print(f"  系数: {clf.coef_}")
 #     print(f"  截距: {clf.intercept_}")
-#     visualize_results(X, y, clf, 'additive logistic')
+#     visualize_results(X_all, y_all, clf, 'additive logistic')
 #     print()
 
 class IntersectLR:
